@@ -1,0 +1,848 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="为之于未有，治之于未乱。  
+在以往的项目开发中，关于软键盘的知识点一直比较模糊，只是知道简单的使用，当遇到问题的时候，也只能靠度娘或者蒙，刚好最近一个同事询问相关问题时，才发现自己知识的薄弱，正好以此来激励自己不断学习。这也正是这边文章的诞生的原因，更是让我决定开始记录《每周一记》。
+
+参考：官方文档
+一、WindowSoftInputMode属性活动的主窗口如何与包含屏幕上的软键盘窗口交互,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android之JitPack快速发布开源库">
+<meta property="og:url" content="http://yoursite.com/2016/12/31/《每周一记》之Android软键盘/index.html">
+<meta property="og:site_name" content="Rickwan's Blog">
+<meta property="og:description" content="为之于未有，治之于未乱。  
+在以往的项目开发中，关于软键盘的知识点一直比较模糊，只是知道简单的使用，当遇到问题的时候，也只能靠度娘或者蒙，刚好最近一个同事询问相关问题时，才发现自己知识的薄弱，正好以此来激励自己不断学习。这也正是这边文章的诞生的原因，更是让我决定开始记录《每周一记》。
+
+参考：官方文档
+一、WindowSoftInputMode属性活动的主窗口如何与包含屏幕上的软键盘窗口交互,">
+<meta property="og:updated_time" content="2016-12-31T15:38:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android之JitPack快速发布开源库">
+<meta name="twitter:description" content="为之于未有，治之于未乱。  
+在以往的项目开发中，关于软键盘的知识点一直比较模糊，只是知道简单的使用，当遇到问题的时候，也只能靠度娘或者蒙，刚好最近一个同事询问相关问题时，才发现自己知识的薄弱，正好以此来激励自己不断学习。这也正是这边文章的诞生的原因，更是让我决定开始记录《每周一记》。
+
+参考：官方文档
+一、WindowSoftInputMode属性活动的主窗口如何与包含屏幕上的软键盘窗口交互,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/31/《每周一记》之Android软键盘/"/>
+
+
+
+
+
+  <title> Android之JitPack快速发布开源库 | Rickwan's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Rickwan's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/31/《每周一记》之Android软键盘/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Rickwan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Rickwan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Rickwan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android之JitPack快速发布开源库
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-31T23:39:32+08:00">
+                2016-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/31/《每周一记》之Android软键盘/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/31/《每周一记》之Android软键盘/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>为之于未有，治之于未乱。  </p>
+<p>在以往的项目开发中，关于软键盘的知识点一直比较模糊，只是知道简单的使用，当遇到问题的时候，也只能靠度娘或者蒙，刚好最近一个同事询问相关问题时，才发现自己知识的薄弱，正好以此来激励自己不断学习。这也正是这边文章的诞生的原因，更是让我决定开始记录《每周一记》。</p>
+</blockquote>
+<p><a href="https://developer.android.com/guide/topics/manifest/activity-element.html#wsoft" target="_blank" rel="external">参考：官方文档</a></p>
+<h4 id="一、WindowSoftInputMode属性"><a href="#一、WindowSoftInputMode属性" class="headerlink" title="一、WindowSoftInputMode属性"></a>一、WindowSoftInputMode属性</h4><p>活动的主窗口如何与包含屏幕上的软键盘窗口交互,这个属性的设置将会影响两件事情:</p>
+<ul>
+<li>软键盘的状态:当活动(Activity)成为用户关注的焦点时，它是否隐藏或显示。</li>
+<li>对活动主窗口进行的调整：无论是调整大小以便为软键盘腾出空间，还是在软键盘覆盖窗口的一部分，以便当前焦点内容可见。  </li>
+</ul>
+<p>How the main window of the activity interacts with the window containing the on-screen soft keyboard. The setting for this attribute affects two things:</p>
+<ul>
+<li>The state of the soft keyboard — whether it is hidden or visible — when the activity becomes the focus of user attention.</li>
+<li>The adjustment made to the activity’s main window — whether it is resized smaller to make room for the soft keyboard or whether its contents pan to make the current focus visible when part of the window is covered by the soft keyboard.</li>
+</ul>
+<h5 id="1、属性详解"><a href="#1、属性详解" class="headerlink" title="1、属性详解"></a>1、属性详解</h5><p>The setting must be one of the values listed in the following table, or a combination of one “state…” value plus one “adjust…” value. Setting multiple values in either group — multiple “state…” values, for example — has undefined results. Individual values are separated by a vertical bar (|). For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;activity android:windowSoftInputMode=&quot;stateVisible|adjustResize&quot; . . . &gt;</div></pre></td></tr></table></figure>
+<p>此处设置的值（“stateUnspecified”和“adjustUnspecified”除外）将覆盖主题中设置的值。</p>
+<p>Values set here (other than “stateUnspecified” and “adjustUnspecified”) override values set in the theme.</p>
+<p>用来设置窗口软键盘的交互模式，其属性一共有9个取值，分别是：stateUnspecified，stateUnchanged，stateHidden，stateAlwaysHidden，stateVisible，stateAlwaysVisible，adjustUnspecified，adjustResize，adjustPan。</p>
+<ul>
+<li><p>stateUnspecified<br>默认交互方式，系统会根据界面采取相应的软键盘的显示模式。比如，当界面上只有输入框和按钮的时候，软键盘就不会自动弹出，但是当有获得焦点的输入框的界面有滚动的需求的时候，会自动弹出软键盘，例如外层为ScrollView。阻止键盘弹出的一个解决方案就是，在xml文件中，设置一个非输入框控件获取焦点。<br>The state of the soft keyboard (whether it is hidden or visible) is not specified. The system will choose an appropriate state or rely on the setting in the theme.<br>This is the default setting for the behavior of the soft keyboard.</p>
+</li>
+<li><p>stateUnchanged<br>保持当前软键盘状态不变。举个例子，假如当前界面键盘是隐藏的，那么跳转之后的界面，软键盘也是隐藏的；如果当前界面是显示的，那么跳转之后的界面，软键盘也是显示状态。<br>The soft keyboard is kept in whatever state it was last in, whether visible or hidden, when the activity comes to the fore.</p>
+</li>
+<li><p>stateHidden<br>当用户导航到而不是返回到该activity时，软键盘总是被隐藏。<br>The soft keyboard is hidden when the user chooses the activity — that is, when the user affirmatively navigates forward to the activity, rather than backs into it because of leaving another activity.</p>
+</li>
+<li><p>stateAlwaysHidden<br>当Activity的主窗口拥有输入焦点时，软键盘总是被隐藏。<br>The soft keyboard is always hidden when the activity’s main window has input focus.</p>
+</li>
+<li><p>stateVisible<br>强制打开软键盘。<br>The soft keyboard is visible when that’s normally appropriate (when the user is navigating forward to the activity’s main window).</p>
+</li>
+<li><p>stateAlwaysVisible<br>The soft keyboard is made visible when the user chooses the activity — that is, when the user affirmatively navigates forward to the activity, rather than backs into it because of leaving another activity.</p>
+</li>
+<li><p>adjustUnspecified<br>设置软键盘与软件的显示内容之间的显示关系，默认的设置模式。在这中情况下，系统会根据界面选择不同的模式。如果界面里面有可以滚动的控件，比如ScrowView，系统会减小可以滚动的界面的大小，从而保证即使软键盘显示出来了，也能够看到所有的内容。如果布局里面没有滚动的控件，那么软键盘可能就会盖住一些内容。没有滚动控件，软键盘下面的布局都被遮挡住，若想修改，只能隐藏软键盘，然后选择。而且，重点注意一下上面的布局，当我们选择的输入框偏下的时候，上面的标题栏和布局被软键盘顶上去了。<br>It is unspecified whether the activity’s main window resizes to make room for the soft keyboard, or whether the contents of the window pan to make the current focus visible on-screen. The system will automatically select one of these modes depending on whether the content of the window has any layout views that can scroll their contents. If there is such a view, the window will be resized, on the assumption that scrolling can make all of the window’s contents visible within a smaller area.<br>This is the default setting for the behavior of the main window.</p>
+</li>
+<li><p>adjustResize(压缩模式)<br>这个属性表示Activity的主窗口总是会被调整大小，从而保证软键盘显示空间。<br>The activity’s main window is always resized to make room for the soft keyboard on screen.</p>
+</li>
+<li><p>adjustPan(平移模式)<br>如果设置为这个属性，那么Activity的屏幕大小并不会调整来保证软键盘的空间，而是采取了另外一种策略，系统会通过布局的移动，来保证用户要进行输入的输入框肯定在用户的视野范围内，从而让用户可以看到自己输入的内容。对于没有滚动控件的布局来说，这个其实就是默认的设置，如果我们选择的位置偏下，上面的标题栏和部分控件会被顶上去。<br>The activity’s main window is not resized to make room for the soft keyboard. Rather, the contents of the window are automatically panned so that the current focus is never obscured by the keyboard and users can always see what they are typing. This is generally less desirable than resizing, because the user may need to close the soft keyboard to get at and interact with obscured parts of the window.</p>
+</li>
+</ul>
+<p> 备注：如果我们不设置”adjust…”的属性，对于没有滚动控件的布局来说，采用的是adjustPan方式，而对于有滚动控件的布局，则是采用的adjustResize方式。</p>
+<h5 id="2、使用方式"><a href="#2、使用方式" class="headerlink" title="2、使用方式"></a>2、使用方式</h5><ul>
+<li><p>代码实现方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> //在activity中的setContentView之前写上以下代码</div><div class="line">getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);</div></pre></td></tr></table></figure>
+</li>
+<li><p>xml实现方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//在 项目的AndroidManifest.xml文件中界面对应的&lt;activity&gt;里加入</div><div class="line">android:windowSoftInputMode=&quot;adjustPan&quot;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="二、手动打开、关闭软键盘"><a href="#二、手动打开、关闭软键盘" class="headerlink" title="二、手动打开、关闭软键盘"></a>二、手动打开、关闭软键盘</h4><p>在开发过程中，难免会遇到想手动打开或者关闭软键盘的情况，这时使用以下代码不失为一种好办法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 动态显示隐藏软键盘</div><div class="line"> *</div><div class="line"> * @param context context</div><div class="line"> */</div><div class="line">public static void toggleSoftInput(Context context) &#123;</div><div class="line">    InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);</div><div class="line">    imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="三、软键盘的Enter键"><a href="#三、软键盘的Enter键" class="headerlink" title="三、软键盘的Enter键"></a>三、软键盘的Enter键</h4><h5 id="1、使用方式"><a href="#1、使用方式" class="headerlink" title="1、使用方式"></a>1、使用方式</h5><ul>
+<li><p>当layout中有多个EditText，把每个控件的android:singleLine的属性都被设置成true的情况下，软键盘的Enter键上 的文字会变成“Next”，按下后下个EditText会自动获得焦点（实现了“Next”的功能）；当最后一个控件获得焦点的时候，Enter键上的文 字会变成“Done”，按下后软键盘会自动隐藏起来。</p>
+</li>
+<li><p>把EditText的ImeOptions属性设置成不同的值，Enter键上可以显示不同的文字或图案<br>actionNone : 回车键，按下后光标到下一行<br>actionGo ： Go，<br>actionSearch ： 一个放大镜<br>actionSend ： Send<br>actionNext ： Next<br>actionDone ： Done，隐藏软键盘，即使不是最后一个文本输入框</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">inputView.setImeOptions(EditorInfo.IME_ACTION_SEARCH);</div><div class="line">editText.setOnEditorActionListener(new TextView.OnEditorActionListener() &#123;</div><div class="line">            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) &#123;</div><div class="line">                if (actionId == EditorInfo.IME_ACTION_SEARCH || (event != null &amp;&amp; event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) &#123;</div><div class="line">                     //do something;              </div><div class="line">                    return true;</div><div class="line">                &#125;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/31/Android之DownloadManager实现软件更新并自动安装/" rel="next" title="Android之DownloadManager实现软件更新并自动安装">
+                <i class="fa fa-chevron-left"></i> Android之DownloadManager实现软件更新并自动安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/31/《每周一记》之Android软键盘/"
+           data-title="Android之JitPack快速发布开源库" data-url="http://yoursite.com/2016/12/31/《每周一记》之Android软键盘/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Rickwan" />
+          <p class="site-author-name" itemprop="name">Rickwan</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、WindowSoftInputMode属性"><span class="nav-number">1.</span> <span class="nav-text">一、WindowSoftInputMode属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、属性详解"><span class="nav-number">1.1.</span> <span class="nav-text">1、属性详解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、使用方式"><span class="nav-number">1.2.</span> <span class="nav-text">2、使用方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、手动打开、关闭软键盘"><span class="nav-number">2.</span> <span class="nav-text">二、手动打开、关闭软键盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、软键盘的Enter键"><span class="nav-number">3.</span> <span class="nav-text">三、软键盘的Enter键</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、使用方式"><span class="nav-number">3.1.</span> <span class="nav-text">1、使用方式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rickwan</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"rickwan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
