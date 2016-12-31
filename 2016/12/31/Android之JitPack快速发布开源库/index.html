@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android之JitPack快速发布开源库 | Rickwan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JitPackJitPack  Documentation
+Publish an Android libraryIn order to publish your Android library on JitPack you just need a working build file in your Git repository.
+Android SDK is available in the b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android之JitPack快速发布开源库">
+<meta property="og:url" content="http://yoursite.com/2016/12/31/Android之JitPack快速发布开源库/index.html">
+<meta property="og:site_name" content="Rickwan's Blog">
+<meta property="og:description" content="JitPackJitPack  Documentation
+Publish an Android libraryIn order to publish your Android library on JitPack you just need a working build file in your Git repository.
+Android SDK is available in the b">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-3c4a8c455d9c516b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-4669b56a41aa7713.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-12-31T12:57:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android之JitPack快速发布开源库">
+<meta name="twitter:description" content="JitPackJitPack  Documentation
+Publish an Android libraryIn order to publish your Android library on JitPack you just need a working build file in your Git repository.
+Android SDK is available in the b">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2082551-3c4a8c455d9c516b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="Rickwan&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rickwan&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android之JitPack快速发布开源库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/31/Android之JitPack快速发布开源库/" class="article-date">
+  <time datetime="2016-12-31T12:49:32.000Z" itemprop="datePublished">2016-12-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android之JitPack快速发布开源库
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://jitpack.io" target="_blank" rel="external">JitPack</a><br><a href="https://jitpack.io/docs/" target="_blank" rel="external">JitPack  Documentation</a></p>
+<h3 id="Publish-an-Android-library"><a href="#Publish-an-Android-library" class="headerlink" title="Publish an Android library"></a>Publish an Android library</h3><p>In order to publish your Android library on JitPack you just need a working build file in your Git repository.</p>
+<p>Android SDK is available in the build environment and ANDROID_HOME variable is already set when the build starts. Builds are run with Java 8 by default but can be configured using a jitpack.yml file.</p>
+<h3 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h3><p>To enable building on JitPack you need to add the android-maven plugin.<br>If using Gradle 3.0 or later:</p>
+<ul>
+<li><p>In your root build.gradle:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;  </div><div class="line">    classpath &apos;com.github.dcendents:android-maven-gradle-plugin:1.5&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>In your library/build.gradle add:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;com.github.dcendents.android-maven&apos;  </div><div class="line">group=&apos;com.github.YourUsername&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create a GitHub release or add a git tag.</p>
+<p>Remark：</p>
+<ul>
+<li><p>Publish the project to Github and release it to the public repository</p>
+<p>  <img src="http://upload-images.jianshu.io/upload_images/2082551-3c4a8c455d9c516b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="release.png"></p>
+</li>
+<li><p>Get the JitPack repository address</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2082551-4669b56a41aa7713.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="look up.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Installing"><a href="#Installing" class="headerlink" title="Installing"></a>Installing</h3><ul>
+<li><p>Users of your library will need add the jitpack.io repository:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">        maven &#123; url &quot;https://jitpack.io&quot; &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>And</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    compile &apos;com.github.jitpack:android-example:1.0.1&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Note: do not add the jitpack.io repository under build script</p>
+<p><a href="https://github.com/Rickwan/IPManagerUtils" target="_blank" rel="external">Demo</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/12/31/Android之JitPack快速发布开源库/" data-id="cixd8ke3c0000qtjcvpefd680" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/31/Android之腾讯云乐固终端加固/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android之腾讯云乐固终端加固
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/31/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/12/31/Android之DownloadManager实现软件更新并自动安装/">Android之JitPack快速发布开源库</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/31/Android之腾讯云乐固终端加固/">Android之腾讯云乐固终端加固</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/31/Android之JitPack快速发布开源库/">Android之JitPack快速发布开源库</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/31/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Rickwan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
