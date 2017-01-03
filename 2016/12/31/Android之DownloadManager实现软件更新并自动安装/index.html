@@ -86,35 +86,20 @@
 
 <meta name="description" content="为之于未有，治之于未乱。
 
-在Android开发中，软件更新可以说是必不可少的，而隔壁的iOS喝着咖啡，无情的嘲笑着这个他们不用再实现的功能，因为苹果会无情的拒绝所有包含软件更新，哪怕是版本检测的APP。作为苦逼的Android攻城狮，我们还是老老实实地研究一下如何实现软件更新吧。
-一、软件升级的实现思路
-下载APK
-
-应用内下载文件应用内实现文件下载，如果退出程序，下载将结束。
-Service">
+在Android开发中，软件更新可以说是必不可少的，而隔壁的iOS喝着咖啡，无情的嘲笑着这个他们不用再实现的功能，因为苹果会无情的拒绝所有包含软件更新，哪怕是版本检测的APP。作为苦逼的Android攻城狮，我们还是老老实实地研究一下如何实现软件更新吧。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android之DownloadManager实现软件更新并自动安装">
 <meta property="og:url" content="http://yoursite.com/2016/12/31/Android之DownloadManager实现软件更新并自动安装/index.html">
 <meta property="og:site_name" content="Rickwan's Blog">
 <meta property="og:description" content="为之于未有，治之于未乱。
 
-在Android开发中，软件更新可以说是必不可少的，而隔壁的iOS喝着咖啡，无情的嘲笑着这个他们不用再实现的功能，因为苹果会无情的拒绝所有包含软件更新，哪怕是版本检测的APP。作为苦逼的Android攻城狮，我们还是老老实实地研究一下如何实现软件更新吧。
-一、软件升级的实现思路
-下载APK
-
-应用内下载文件应用内实现文件下载，如果退出程序，下载将结束。
-Service">
-<meta property="og:updated_time" content="2016-12-31T13:48:18.000Z">
+在Android开发中，软件更新可以说是必不可少的，而隔壁的iOS喝着咖啡，无情的嘲笑着这个他们不用再实现的功能，因为苹果会无情的拒绝所有包含软件更新，哪怕是版本检测的APP。作为苦逼的Android攻城狮，我们还是老老实实地研究一下如何实现软件更新吧。">
+<meta property="og:updated_time" content="2017-01-03T11:54:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android之DownloadManager实现软件更新并自动安装">
 <meta name="twitter:description" content="为之于未有，治之于未乱。
 
-在Android开发中，软件更新可以说是必不可少的，而隔壁的iOS喝着咖啡，无情的嘲笑着这个他们不用再实现的功能，因为苹果会无情的拒绝所有包含软件更新，哪怕是版本检测的APP。作为苦逼的Android攻城狮，我们还是老老实实地研究一下如何实现软件更新吧。
-一、软件升级的实现思路
-下载APK
-
-应用内下载文件应用内实现文件下载，如果退出程序，下载将结束。
-Service">
+在Android开发中，软件更新可以说是必不可少的，而隔壁的iOS喝着咖啡，无情的嘲笑着这个他们不用再实现的功能，因为苹果会无情的拒绝所有包含软件更新，哪怕是版本检测的APP。作为苦逼的Android攻城狮，我们还是老老实实地研究一下如何实现软件更新吧。">
 
 
 
@@ -365,6 +350,7 @@ Service">
 <p>为之于未有，治之于未乱。</p>
 </blockquote>
 <p>在Android开发中，软件更新可以说是必不可少的，而隔壁的iOS喝着咖啡，无情的嘲笑着这个他们不用再实现的功能，因为苹果会无情的拒绝所有包含软件更新，哪怕是版本检测的APP。作为苦逼的Android攻城狮，我们还是老老实实地研究一下如何实现软件更新吧。</p>
+<a id="more"></a>
 <h3 id="一、软件升级的实现思路"><a href="#一、软件升级的实现思路" class="headerlink" title="一、软件升级的实现思路"></a>一、软件升级的实现思路</h3><ul>
 <li><p>下载APK</p>
 <ul>
@@ -380,6 +366,7 @@ Service">
 </li>
 </ul>
 <p>对于用户而言，后台下载并自动安装必然是一个好的使用体验。使用Service去实现文件下载的话，还需要我们自己维护网络请求，这可是非常麻烦又头痛的事情，有没有一个更方便快捷的方式呢？下面将介绍一种简单粗暴的实现方法！</p>
+<!-- more -->
 <h3 id="二、DownloadManager实现文件下载"><a href="#二、DownloadManager实现文件下载" class="headerlink" title="二、DownloadManager实现文件下载"></a>二、DownloadManager实现文件下载</h3><ul>
 <li>使用DownloadManager实现APK下载<br>通过DownloadManager来实现文件下载，我们就可以完全不用考虑网络请求、异步问题了，系统帮我们处理了所有事情，你可以继续操作App，即便是退出程序也不会影响APK的下载。</li>
 </ul>
