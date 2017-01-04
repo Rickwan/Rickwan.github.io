@@ -86,20 +86,20 @@
 
 <meta name="description" content="为之于未有，治之于未乱。
 
-Activity的生命周期和启动模式">
+Activity作为Android四大组件之首，可见其重要性，它的生命周期和启动模式在平时的开发中，重要而又常见，其中启动模式和标记位容易混淆，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《每周一记》Android之Activity的生命周期和启动模式">
 <meta property="og:url" content="http://yoursite.com/2017/01/03/《每周一记》Android之Activity的生命周期和启动模式/index.html">
 <meta property="og:site_name" content="Rickwan's Blog">
 <meta property="og:description" content="为之于未有，治之于未乱。
 
-Activity的生命周期和启动模式">
-<meta property="og:updated_time" content="2017-01-03T14:43:51.000Z">
+Activity作为Android四大组件之首，可见其重要性，它的生命周期和启动模式在平时的开发中，重要而又常见，其中启动模式和标记位容易混淆，">
+<meta property="og:updated_time" content="2017-01-04T14:03:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《每周一记》Android之Activity的生命周期和启动模式">
 <meta name="twitter:description" content="为之于未有，治之于未乱。
 
-Activity的生命周期和启动模式">
+Activity作为Android四大组件之首，可见其重要性，它的生命周期和启动模式在平时的开发中，重要而又常见，其中启动模式和标记位容易混淆，">
 
 
 
@@ -387,7 +387,41 @@ Activity的生命周期和启动模式">
         <blockquote>
 <p>为之于未有，治之于未乱。</p>
 </blockquote>
-<p>Activity的生命周期和启动模式</p>
+<p>Activity作为Android四大组件之首，可见其重要性，它的生命周期和启动模式在平时的开发中，重要而又常见，其中启动模式和标记位容易混淆，</p>
+<a id="more"></a>
+<h4 id="1、Activity的生命周期"><a href="#1、Activity的生命周期" class="headerlink" title="1、Activity的生命周期"></a>1、Activity的生命周期</h4><p>很多同学认为Activity的生命周期太简单而忽略了它的重要性，熟练的掌握相关知识，对于Activity的灵活运用会有很大的帮助。</p>
+<p>详情：<a href="https://developer.android.com/reference/android/app/Activity.html" target="_blank" rel="external">官方地址</a></p>
+<p>Tips:</p>
+<ul>
+<li>Activity采用透明主题时，不会回调onStop</li>
+<li>旋转屏幕使Activity不会重新创建的方法：android:configChanges=”orientation|keyboardHidden|screenSize”</li>
+</ul>
+<h4 id="2、Activity的启动模式"><a href="#2、Activity的启动模式" class="headerlink" title="2、Activity的启动模式"></a>2、Activity的启动模式</h4><h5 id="2-1-Activity的LaunchMode"><a href="#2-1-Activity的LaunchMode" class="headerlink" title="2.1 Activity的LaunchMode"></a>2.1 Activity的LaunchMode</h5><p>有时候为了满足项目特殊需求，我们就必须使用Activity的启动模式，下面将简单了介绍一下四种启动模式:standard、singleTop、singleTask、singleInstance。</p>
+<p>这些模式分为两大类，“standard”和“singleTop”Activity 为一类，“singleTask”和“singleInstance”为另一类。前两者启动模式的Activity可以被实例化多次。</p>
+<ul>
+<li>standard：默认模式<br>每次启动一个Activity都会创建一个新的实例</li>
+<li>singleTop：栈顶复用模式<br>如果目标任务的顶部已存在一个Activity实例则系统会通过调用该实例的onNewIntent()方法向其传送Intent，而不是创建新的Activity实例。</li>
+<li>singleTask：栈内复用模式<br>系统在新任务的根位置创建Activity并向其传送Intent。不过，如果已存在一个Activity实例，则系统会通过调用该实例的onNewIntent()方法向其传送Intent，而不是创建新的Activity实例，同时会将位于该实例顶部的其他实例全部移除出栈。</li>
+<li>singleInstance：单例模式<br>与“singleTask””相同，只是系统不会将任何其他Activity启动到包含该实例的任务中。该Activity始终是其任务唯一仅有的成员。</li>
+</ul>
+<h5 id="2-1-Activity的Flags"><a href="#2-1-Activity的Flags" class="headerlink" title="2.1 Activity的Flags"></a>2.1 Activity的Flags</h5><p>Activity的Flags有很多，详情请查看官方文档，这里介绍几种比较常用的标记位。标记位的作用有很多，有的可以设定Activity的启动模式。</p>
+<ul>
+<li>FLAG_ACTIVITY_NEW_TASK:<br>为Activity指定“singleTask”启动模式</li>
+<li>FLAG_ACTIVITY_SINGLE_TOP:<br>相当于LauchMode中的singleTop。</li>
+<li>FLAG_ACTIVITY_CLEAR_TOP:<br>在同一个任务栈中所有位于它上面的Activity都要出栈。这个标记位一般都singleTask启动模式一起出现，在这种情况下，被动的Activity的实例如果已经存在，系统就会调用它的onNewIntent。如果被启动的Activity采用standard启动模式，那么它连同它之上的Activity都要出栈，系统会创建新的实例并放入栈顶。</li>
+<li>FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS:<br>具有这个标记位的Activity不会出现在历史Activity的列表中，如果调出的Activtivity只是一个功能片段，并没有实际的意义，此时长按Home键调出最近使用过的程序类表中，将不会出现此Activity。</li>
+<li>FLAG_ACTIVITY_NO_HISTORY:<br>使用这个FLAG启动的Activity，一旦退出，它不会存在于栈中，比如说，原来是A,B,C这个时候在C中以这个FLAG启动D的，D再启动E，这个时候栈中情况为A,B,C,E。</li>
+</ul>
+<h5 id="2-3-LaunchMode和Flags的运用"><a href="#2-3-LaunchMode和Flags的运用" class="headerlink" title="2.3 LaunchMode和Flags的运用"></a>2.3 LaunchMode和Flags的运用</h5><p>设置Activity启动模式的两种方法：</p>
+<ul>
+<li><p>通过在AndroidMenifest.xml中设置：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;activity</div><div class="line">    android:name=&quot;.ui.activity.MainActivity&quot;</div><div class="line">    android:screenOrientation=&quot;portrait&quot;</div><div class="line">    android:launchMode=&quot;singleTask&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过Intent设置标志位  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent(this,MainActivity.class);</div><div class="line">intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以上两种方式都可以为Activity设置启动模式，当两者同时存在时，将以第二种为准，第一种方式无法直接为Activity设定FLAG_ACTIVITY_CLEAR_TOP标识，而第二种则无法为Activity指定singleInstance模式。</p>
 
       
     </div>
@@ -479,8 +513,17 @@ Activity的生命周期和启动模式">
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -536,6 +579,22 @@ Activity的生命周期和启动模式">
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、Activity的生命周期"><span class="nav-number">1.</span> <span class="nav-text">1、Activity的生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、Activity的启动模式"><span class="nav-number">2.</span> <span class="nav-text">2、Activity的启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Activity的LaunchMode"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Activity的LaunchMode</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Activity的Flags"><span class="nav-number">2.2.</span> <span class="nav-text">2.1 Activity的Flags</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-LaunchMode和Flags的运用"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 LaunchMode和Flags的运用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
