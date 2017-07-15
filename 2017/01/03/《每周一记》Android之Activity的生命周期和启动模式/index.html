@@ -94,7 +94,7 @@ Activity作为Android四大组件之首，它的生命周期和启动模式在�
 <meta property="og:description" content="为之于未有，治之于未乱。
 
 Activity作为Android四大组件之首，它的生命周期和启动模式在平时的开发中，重要而又常见，很多同学认为Activity的生命周期太简单而忽略了它的重要性，熟练的掌握相关知识，对于Activity的灵活运用会有很大的帮助。">
-<meta property="og:updated_time" content="2017-07-15T04:54:49.000Z">
+<meta property="og:updated_time" content="2017-07-15T05:03:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《每周一记》Android之Activity的生命周期和启动模式">
 <meta name="twitter:description" content="为之于未有，治之于未乱。
@@ -400,11 +400,10 @@ Activity作为Android四大组件之首，它的生命周期和启动模式在�
 <ul>
 <li>standard：默认模式<br>每次启动一个Activity都会创建一个新的实例</li>
 <li>singleTop：栈顶复用模式<br>如果目标任务的顶部已存在一个Activity实例则系统会通过调用该实例的onNewIntent()方法向其传送Intent，而不是创建新的Activity实例。</li>
-<li>singleTask：栈内复用模式<br>系统在新任务的根位置创建Activity并向其传送Intent。不过，如果已存在一个Activity实例，则系统会通过调用该实例的onNewIntent()方法向其传送Intent，而不是创建新的Activity实例，同时会将位于该实例顶部的其他实例全部移除出栈。</li>
-</ul>
-<p>此处将受TaskAffinity属性影响(用于指定Activity所关联的Task)，系统将查询是否有该Activity需要的任务栈，如果不存在，就会重新创建一个任务栈，然后创建Activity的实例；如果该任务栈已存在，则继续查询是否已存在该Activity的实例，如果不存在，则创建实例并放入栈中，如果存在，则将该实例顶部的其他实例全部推出栈。</p>
-<ul>
-<li>singleInstance：单例模式<br>与“singleTask””相同，只是系统不会将任何其他Activity启动到包含该实例的任务中。该Activity始终是其任务唯一仅有的成员。</li>
+<li><p>singleTask：栈内复用模式<br>系统在新任务的根位置创建Activity并向其传送Intent。不过，如果已存在一个Activity实例，则系统会通过调用该实例的onNewIntent()方法向其传送Intent，而不是创建新的Activity实例，同时会将位于该实例顶部的其他实例全部移除出栈。<br>此处将受TaskAffinity属性影响(用于指定Activity所关联的Task)，系统将查询是否有该Activity需要的任务栈，如果不存在，就会重新创建一个任务栈，然后创建Activity的实例；如果该任务栈已存在，则继续查询是否已存在该Activity的实例，如果不存在，则创建实例并放入栈中，如果存在，则将该实例顶部的其他实例全部推出栈。</p>
+</li>
+<li><p>singleInstance：单例模式<br>与“singleTask””相同，只是系统不会将任何其他Activity启动到包含该实例的任务中。该Activity始终是其任务唯一仅有的成员。</p>
+</li>
 </ul>
 <h5 id="2-1-Activity的Flags"><a href="#2-1-Activity的Flags" class="headerlink" title="2.1 Activity的Flags"></a>2.1 Activity的Flags</h5><p>Activity的Flags有很多，详情请查看官方文档，这里介绍几种比较常用的标记位。标记位的作用有很多，有的可以设定Activity的启动模式。</p>
 <ul>
