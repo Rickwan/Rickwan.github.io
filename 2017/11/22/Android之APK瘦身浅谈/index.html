@@ -1,0 +1,945 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="APK,Android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="为之于未有，治之于未乱。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android之APK瘦身浅谈">
+<meta property="og:url" content="http://yoursite.com/2017/11/22/Android之APK瘦身浅谈/index.html">
+<meta property="og:site_name" content="Rickwan's Blog">
+<meta property="og:description" content="为之于未有，治之于未乱。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-2d20e1eb47d9b277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-623e3f84eb7ed21d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-2e46e081b4e5ca27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-b7d8bafaa0a59b51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-2d20e1eb47d9b277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-623e3f84eb7ed21d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-2e46e081b4e5ca27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-b7d8bafaa0a59b51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-11-26T14:17:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android之APK瘦身浅谈">
+<meta name="twitter:description" content="为之于未有，治之于未乱。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2082551-2d20e1eb47d9b277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/22/Android之APK瘦身浅谈/"/>
+
+
+
+
+
+  <title> Android之APK瘦身浅谈 | Rickwan's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Rickwan's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/22/Android之APK瘦身浅谈/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Rickwan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Rickwan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Rickwan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android之APK瘦身浅谈
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-22T20:49:32+08:00">
+                2017-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/22/Android之APK瘦身浅谈/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/11/22/Android之APK瘦身浅谈/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>为之于未有，治之于未乱。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="APK结构"><a href="#APK结构" class="headerlink" title="APK结构"></a>APK结构</h3><p>在知道如何为APK瘦身前，我们需要先了解APK的结构，然后根据其组成部分进行优化处理。在Android Studio工具栏里，打开build–&gt;Analyze APK, 选择要分析的APK。<br><img src="http://upload-images.jianshu.io/upload_images/2082551-2d20e1eb47d9b277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="APK结构.png"></p>
+<p>从上面图片中可以看出占用空间的主要是lib、res、assets、代码等，那么我们主要方向则应该精简代码、压缩图片、去除无用的库和资源文件。精简代码则要求开发者具有较高的编码素养和良好的编码习惯，同时也可能优化代码之后对APK大小不会有明细的改善，那接下来则介绍几种立竿见影的方法。</p>
+<h3 id="1、压缩图片"><a href="#1、压缩图片" class="headerlink" title="1、压缩图片"></a>1、压缩图片</h3><p>通常情况下，从UI设计师那里获得的切图都是mipmap-hdpi、mipmap-xhdpi、mipmap-xxhdpi等几套不同分辨率的，通常情况下我们选择使用xhdpi或者xxhdpi一套资源图，即可满足大部分Android分辨率的手机。同时进行图片压缩，可以大大减少图片资源的占用大小。</p>
+<ul>
+<li>推荐使用<a href="https://tinypng.com" target="_blank" rel="external">tinypng</a>、<a href="https://zhitu.isux.us" target="_blank" rel="external">智图</a></li>
+</ul>
+<h3 id="2、使用Vector-Asset代替图片资源"><a href="#2、使用Vector-Asset代替图片资源" class="headerlink" title="2、使用Vector Asset代替图片资源"></a>2、使用Vector Asset代替图片资源</h3><h4 id="2-1-Vector的优势"><a href="#2-1-Vector的优势" class="headerlink" title="2.1 Vector的优势"></a>2.1 Vector的优势</h4><p>Google在发布Android 5.0时，提供了Vector矢量图的支持，VectorDrawable相对于普通的Drawable来说，有以下几个好处：</p>
+<ul>
+<li>Vector矢量图可以自动进行适配，不需要通过分辨率来设置不同的图片</li>
+<li>Vector矢量图可以大幅减少图像的体积，同样一张图，用Vector来实现，可能只有PNG的几十分之一</li>
+<li>使用简单，很多设计工具，都可以直接导出SVG图像，从而转换成Vector矢量图</li>
+<li>功能强大，少量代码即可实现复杂炫酷的动画</li>
+<li>成熟、稳定，前端已经非常广泛的进行使用了</li>
+</ul>
+<h4 id="2-2-在Android中的使用"><a href="#2-2-在Android中的使用" class="headerlink" title="2.2 在Android中的使用"></a>2.2 在Android中的使用</h4><p>Android Studio提供了两种创建Vector资源的方式:</p>
+<ul>
+<li>使用Material Icon</li>
+<li>使用Local file(SVG,PSD)</li>
+</ul>
+<p>在Android Studio工具栏里，File-&gt;New-&gt;Vector Asset<br><img src="http://upload-images.jianshu.io/upload_images/2082551-623e3f84eb7ed21d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Material Icon.png"><br><img src="http://upload-images.jianshu.io/upload_images/2082551-2e46e081b4e5ca27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Local file.png"></p>
+<ul>
+<li>Material Icon：</li>
+</ul>
+<p>如果需要对5.0之前版本进行兼容的话，还需引用AppCompat 23.2及以上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:appcompat-v7:23.2.0</div></pre></td></tr></table></figure>
+<p>本文主要讲解使用Vector Asset来代替PNG图片，至于其动画等进阶用法，本文不做详细讲解。<br><img src="http://upload-images.jianshu.io/upload_images/2082551-b7d8bafaa0a59b51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Vector Drawable.png"></p>
+<p>这里需要解释下这里的几个标签：</p>
+<ul>
+<li>android:width :定义图片的宽</li>
+<li>android:height:定义图片的高</li>
+<li>android:viewportWidth:定义图像宽被划分的比例大小</li>
+<li>android:viewportHeight :定义图像高被划分的比例大小</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">例如例子中的24，即把24dp大小的图像划分成24份，后面Path标签中的坐标，就全部使用的是这里划分后的坐标系统。这样的好处，就是将图像大小与图像分离，我们可以随意修改图像大小，而不需要修改PathData中的坐标。</div></pre></td></tr></table></figure>
+<ul>
+<li>android:fillColor:图片填充颜色</li>
+<li>android:pathData中的这些属性与Canvas绘图的属性基本类似。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">M = moveto(M X,Y) ：将画笔移动到指定的坐标位置</div><div class="line">L = lineto(L X,Y) ：画直线到指定的坐标位置</div><div class="line">H = horizontal lineto(H X)：画水平线到指定的X坐标位置</div><div class="line">V = vertical lineto(V Y)：画垂直线到指定的Y坐标位置</div><div class="line">C = curveto(C X1,Y1,X2,Y2,ENDX,ENDY)：三次贝赛曲线</div><div class="line">S = smooth curveto(S X2,Y2,ENDX,ENDY)</div><div class="line">Q = quadratic Belzier curve(Q X,Y,ENDX,ENDY)：二次贝赛曲线</div><div class="line">T = smooth quadratic Belzier curveto(T ENDX,ENDY)：映射</div><div class="line">A = elliptical Arc(A RX,RY,XROTATION,FLAG1,FLAG2,X,Y)：弧线</div><div class="line">Z = closepath()：关闭路径</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3、去除无用资源"><a href="#3、去除无用资源" class="headerlink" title="3、去除无用资源"></a>3、去除无用资源</h3><p>在gradle使用minifyEnabled进行Proguard混淆，关于如何进行混淆，本文不做讲解。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            minifyEnabled true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在gradle使用shrinkResources去除无用资源。另外我们也可以在AndroidStudio的菜单中选择Analyze-&gt;Inspecting Code进入Lint工具分析，查找未使用的图片资源 ，在结果列表中找到Unused resource这一栏，里面显示的都是未使用的资源列表，可以参照该信息手动删除资源。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123; shrinkResources true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在gradle使用resConfigs设置去除无用的语言资源。例如下面的代码就只保留了中文和英文的语言资源：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    defaultConfig &#123;</div><div class="line">        resConfigs &quot;zh&quot; ,&quot;en&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>为之于未有，治之于未乱。</p>
+</blockquote>
+<!-- more -->
+<h3 id="APK结构-1"><a href="#APK结构-1" class="headerlink" title="APK结构"></a>APK结构</h3><p>在知道如何为APK瘦身前，我们需要先了解APK的结构，然后根据其组成部分进行优化处理。在Android Studio工具栏里，打开build–&gt;Analyze APK, 选择要分析的APK。<br><img src="http://upload-images.jianshu.io/upload_images/2082551-2d20e1eb47d9b277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="APK结构.png"></p>
+<p>从上面图片中可以看出占用空间的主要是lib、res、assets、代码等，那么我们主要方向则应该精简代码、压缩图片、去除无用的库和资源文件。精简代码则要求开发者具有较高的编码素养和良好的编码习惯，同时也可能优化代码之后对APK大小不会有明细的改善，那接下来则介绍几种立竿见影的方法。</p>
+<h3 id="1、压缩图片-1"><a href="#1、压缩图片-1" class="headerlink" title="1、压缩图片"></a>1、压缩图片</h3><p>通常情况下，从UI设计师那里获得的切图都是mipmap-hdpi、mipmap-xhdpi、mipmap-xxhdpi等几套不同分辨率的，通常情况下我们选择使用xhdpi或者xxhdpi一套资源图，即可满足大部分Android分辨率的手机。同时进行图片压缩，可以大大减少图片资源的占用大小。</p>
+<ul>
+<li>推荐使用<a href="https://tinypng.com" target="_blank" rel="external">tinypng</a>、<a href="https://zhitu.isux.us" target="_blank" rel="external">智图</a></li>
+</ul>
+<h3 id="2、使用Vector-Asset代替图片资源-1"><a href="#2、使用Vector-Asset代替图片资源-1" class="headerlink" title="2、使用Vector Asset代替图片资源"></a>2、使用Vector Asset代替图片资源</h3><h4 id="2-1-Vector的优势-1"><a href="#2-1-Vector的优势-1" class="headerlink" title="2.1 Vector的优势"></a>2.1 Vector的优势</h4><p>Google在发布Android 5.0时，提供了Vector矢量图的支持，VectorDrawable相对于普通的Drawable来说，有以下几个好处：</p>
+<ul>
+<li>Vector矢量图可以自动进行适配，不需要通过分辨率来设置不同的图片</li>
+<li>Vector矢量图可以大幅减少图像的体积，同样一张图，用Vector来实现，可能只有PNG的几十分之一</li>
+<li>使用简单，很多设计工具，都可以直接导出SVG图像，从而转换成Vector矢量图</li>
+<li>功能强大，少量代码即可实现复杂炫酷的动画</li>
+<li>成熟、稳定，前端已经非常广泛的进行使用了</li>
+</ul>
+<h4 id="2-2-在Android中的使用-1"><a href="#2-2-在Android中的使用-1" class="headerlink" title="2.2 在Android中的使用"></a>2.2 在Android中的使用</h4><p>Android Studio提供了两种创建Vector资源的方式:</p>
+<ul>
+<li>使用Material Icon</li>
+<li>使用Local file(SVG,PSD)</li>
+</ul>
+<p>在Android Studio工具栏里，File-&gt;New-&gt;Vector Asset<br><img src="http://upload-images.jianshu.io/upload_images/2082551-623e3f84eb7ed21d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Material Icon.png"><br><img src="http://upload-images.jianshu.io/upload_images/2082551-2e46e081b4e5ca27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Local file.png"></p>
+<ul>
+<li>Material Icon：</li>
+</ul>
+<p>如果需要对5.0之前版本进行兼容的话，还需引用AppCompat 23.2及以上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:appcompat-v7:23.2.0</div></pre></td></tr></table></figure>
+<p>本文主要讲解使用Vector Asset来代替PNG图片，至于其动画等进阶用法，本文不做详细讲解。<br><img src="http://upload-images.jianshu.io/upload_images/2082551-b7d8bafaa0a59b51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Vector Drawable.png"></p>
+<p>这里需要解释下这里的几个标签：</p>
+<ul>
+<li>android:width :定义图片的宽</li>
+<li>android:height:定义图片的高</li>
+<li>android:viewportWidth:定义图像宽被划分的比例大小</li>
+<li>android:viewportHeight :定义图像高被划分的比例大小</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">例如例子中的24，即把24dp大小的图像划分成24份，后面Path标签中的坐标，就全部使用的是这里划分后的坐标系统。这样的好处，就是将图像大小与图像分离，我们可以随意修改图像大小，而不需要修改PathData中的坐标。</div></pre></td></tr></table></figure>
+<ul>
+<li>android:fillColor:图片填充颜色</li>
+<li>android:pathData中的这些属性与Canvas绘图的属性基本类似。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">M = moveto(M X,Y) ：将画笔移动到指定的坐标位置</div><div class="line">L = lineto(L X,Y) ：画直线到指定的坐标位置</div><div class="line">H = horizontal lineto(H X)：画水平线到指定的X坐标位置</div><div class="line">V = vertical lineto(V Y)：画垂直线到指定的Y坐标位置</div><div class="line">C = curveto(C X1,Y1,X2,Y2,ENDX,ENDY)：三次贝赛曲线</div><div class="line">S = smooth curveto(S X2,Y2,ENDX,ENDY)</div><div class="line">Q = quadratic Belzier curve(Q X,Y,ENDX,ENDY)：二次贝赛曲线</div><div class="line">T = smooth quadratic Belzier curveto(T ENDX,ENDY)：映射</div><div class="line">A = elliptical Arc(A RX,RY,XROTATION,FLAG1,FLAG2,X,Y)：弧线</div><div class="line">Z = closepath()：关闭路径</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3、去除无用资源-1"><a href="#3、去除无用资源-1" class="headerlink" title="3、去除无用资源"></a>3、去除无用资源</h3><p>在gradle使用minifyEnabled进行Proguard混淆，关于如何进行混淆，本文不做讲解。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            minifyEnabled true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在gradle使用shrinkResources去除无用资源。另外我们也可以在AndroidStudio的菜单中选择Analyze-&gt;Inspecting Code进入Lint工具分析，查找未使用的图片资源 ，在结果列表中找到Unused resource这一栏，里面显示的都是未使用的资源列表，可以参照该信息手动删除资源。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            shrinkResources true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在gradle使用resConfigs设置去除无用的语言资源。例如下面的代码就只保留了中文和英文的语言资源：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    defaultConfig &#123;</div><div class="line">        resConfigs &quot;zh&quot; ,&quot;en&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/APK/" rel="tag"># APK</a>
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/01/技术分享/" rel="next" title="技术分享">
+                <i class="fa fa-chevron-left"></i> 技术分享
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/11/22/Android之APK瘦身浅谈/"
+           data-title="Android之APK瘦身浅谈" data-url="http://yoursite.com/2017/11/22/Android之APK瘦身浅谈/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Rickwan" />
+          <p class="site-author-name" itemprop="name">Rickwan</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#APK结构"><span class="nav-number">1.</span> <span class="nav-text">APK结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1、压缩图片"><span class="nav-number">2.</span> <span class="nav-text">1、压缩图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、使用Vector-Asset代替图片资源"><span class="nav-number">3.</span> <span class="nav-text">2、使用Vector Asset代替图片资源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-Vector的优势"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 Vector的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-在Android中的使用"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 在Android中的使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、去除无用资源"><span class="nav-number">4.</span> <span class="nav-text">3、去除无用资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#APK结构-1"><span class="nav-number">5.</span> <span class="nav-text">APK结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1、压缩图片-1"><span class="nav-number">6.</span> <span class="nav-text">1、压缩图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、使用Vector-Asset代替图片资源-1"><span class="nav-number">7.</span> <span class="nav-text">2、使用Vector Asset代替图片资源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-Vector的优势-1"><span class="nav-number">7.1.</span> <span class="nav-text">2.1 Vector的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-在Android中的使用-1"><span class="nav-number">7.2.</span> <span class="nav-text">2.2 在Android中的使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、去除无用资源-1"><span class="nav-number">8.</span> <span class="nav-text">3、去除无用资源</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rickwan</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"rickwan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
