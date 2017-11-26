@@ -84,12 +84,16 @@
 
 
 
-<meta name="description" content="为之于未有，治之于未乱。">
+<meta name="description" content="为之于未有，治之于未乱。
+
+APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，然后根据其组成部分进行优化处理。在Android Studio工具栏里，打开build–&amp;gt;Analyze APK, 选择要分析的APK。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android之APK瘦身浅谈">
 <meta property="og:url" content="http://yoursite.com/2017/11/22/Android之APK瘦身浅谈/index.html">
 <meta property="og:site_name" content="Rickwan's Blog">
-<meta property="og:description" content="为之于未有，治之于未乱。">
+<meta property="og:description" content="为之于未有，治之于未乱。
+
+APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，然后根据其组成部分进行优化处理。在Android Studio工具栏里，打开build–&amp;gt;Analyze APK, 选择要分析的APK。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-2d20e1eb47d9b277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-623e3f84eb7ed21d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-2e46e081b4e5ca27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -98,10 +102,12 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-623e3f84eb7ed21d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-2e46e081b4e5ca27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-b7d8bafaa0a59b51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-11-26T14:17:20.000Z">
+<meta property="og:updated_time" content="2017-11-26T14:23:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android之APK瘦身浅谈">
-<meta name="twitter:description" content="为之于未有，治之于未乱。">
+<meta name="twitter:description" content="为之于未有，治之于未乱。
+
+APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，然后根据其组成部分进行优化处理。在Android Studio工具栏里，打开build–&amp;gt;Analyze APK, 选择要分析的APK。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2082551-2d20e1eb47d9b277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -390,8 +396,7 @@
         <blockquote>
 <p>为之于未有，治之于未乱。</p>
 </blockquote>
-<a id="more"></a>
-<h3 id="APK结构"><a href="#APK结构" class="headerlink" title="APK结构"></a>APK结构</h3><p>在知道如何为APK瘦身前，我们需要先了解APK的结构，然后根据其组成部分进行优化处理。在Android Studio工具栏里，打开build–&gt;Analyze APK, 选择要分析的APK。<br><img src="http://upload-images.jianshu.io/upload_images/2082551-2d20e1eb47d9b277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="APK结构.png"></p>
+<h3 id="APK结构"><a href="#APK结构" class="headerlink" title="APK结构"></a>APK结构</h3><p>在知道如何为APK瘦身前，我们需要先了解APK的结构，然后根据其组成部分进行优化处理。在Android Studio工具栏里，打开build–&gt;Analyze APK, 选择要分析的APK。<br><a id="more"></a><br><img src="http://upload-images.jianshu.io/upload_images/2082551-2d20e1eb47d9b277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="APK结构.png"></p>
 <p>从上面图片中可以看出占用空间的主要是lib、res、assets、代码等，那么我们主要方向则应该精简代码、压缩图片、去除无用的库和资源文件。精简代码则要求开发者具有较高的编码素养和良好的编码习惯，同时也可能优化代码之后对APK大小不会有明细的改善，那接下来则介绍几种立竿见影的方法。</p>
 <h3 id="1、压缩图片"><a href="#1、压缩图片" class="headerlink" title="1、压缩图片"></a>1、压缩图片</h3><p>通常情况下，从UI设计师那里获得的切图都是mipmap-hdpi、mipmap-xhdpi、mipmap-xxhdpi等几套不同分辨率的，通常情况下我们选择使用xhdpi或者xxhdpi一套资源图，即可满足大部分Android分辨率的手机。同时进行图片压缩，可以大大减少图片资源的占用大小。</p>
 <ul>
