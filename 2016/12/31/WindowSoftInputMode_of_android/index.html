@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="APK,Android," />
+  <meta name="keywords" content="Android,软键盘," />
 
 
 
@@ -84,27 +84,22 @@
 
 
 
-<meta name="description" content="为之于未有，治之于未乱。
+<meta name="description" content="为之于未有，治之于未乱。  
 
-APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，然后根据其组成部分进行优化处理。在Android Studio工具栏里，打开build–&amp;gt;Analyze APK, 选择要分析的APK。">
+在以往的项目开发中，关于软键盘的知识点一直比较模糊，只是知道简单的使用，当遇到问题的时候，也只能靠度娘或者蒙，刚好最近一个同事询问相关问题时，才发现自己知识的薄弱，正好以此来激励自己不断学习。这也正是这边文章的诞生的原因，更是让我决定开始记录《每周一记》。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android之APK瘦身浅谈">
-<meta property="og:url" content="http://yoursite.com/2017/11/22/Android之APK瘦身浅谈/index.html">
+<meta property="og:title" content="《每周一记》之Android软键盘">
+<meta property="og:url" content="http://yoursite.com/2016/12/31/WindowSoftInputMode_of_android/index.html">
 <meta property="og:site_name" content="Rickwan's Blog">
-<meta property="og:description" content="为之于未有，治之于未乱。
+<meta property="og:description" content="为之于未有，治之于未乱。  
 
-APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，然后根据其组成部分进行优化处理。在Android Studio工具栏里，打开build–&amp;gt;Analyze APK, 选择要分析的APK。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-2d20e1eb47d9b277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-623e3f84eb7ed21d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-2e46e081b4e5ca27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2082551-b7d8bafaa0a59b51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-11-26T14:41:43.000Z">
+在以往的项目开发中，关于软键盘的知识点一直比较模糊，只是知道简单的使用，当遇到问题的时候，也只能靠度娘或者蒙，刚好最近一个同事询问相关问题时，才发现自己知识的薄弱，正好以此来激励自己不断学习。这也正是这边文章的诞生的原因，更是让我决定开始记录《每周一记》。">
+<meta property="og:updated_time" content="2017-01-04T14:20:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android之APK瘦身浅谈">
-<meta name="twitter:description" content="为之于未有，治之于未乱。
+<meta name="twitter:title" content="《每周一记》之Android软键盘">
+<meta name="twitter:description" content="为之于未有，治之于未乱。  
 
-APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，然后根据其组成部分进行优化处理。在Android Studio工具栏里，打开build–&amp;gt;Analyze APK, 选择要分析的APK。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2082551-2d20e1eb47d9b277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+在以往的项目开发中，关于软键盘的知识点一直比较模糊，只是知道简单的使用，当遇到问题的时候，也只能靠度娘或者蒙，刚好最近一个同事询问相关问题时，才发现自己知识的薄弱，正好以此来激励自己不断学习。这也正是这边文章的诞生的原因，更是让我决定开始记录《每周一记》。">
 
 
 
@@ -132,13 +127,13 @@ APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，�
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/22/Android之APK瘦身浅谈/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/31/WindowSoftInputMode_of_android/"/>
 
 
 
 
 
-  <title> Android之APK瘦身浅谈 | Rickwan's Blog </title>
+  <title> 《每周一记》之Android软键盘 | Rickwan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +277,7 @@ APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，�
   
 
   <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/22/Android之APK瘦身浅谈/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/31/WindowSoftInputMode_of_android/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Rickwan">
@@ -306,7 +301,7 @@ APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，�
             
             
               
-                Android之APK瘦身浅谈
+                《每周一记》之Android软键盘
               
             
           </h1>
@@ -321,8 +316,8 @@ APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-22T20:49:32+08:00">
-                2017-11-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-31T23:44:32+08:00">
+                2016-12-31
               </time>
             
 
@@ -344,8 +339,8 @@ APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/《每周一记》/" itemprop="url" rel="index">
+                    <span itemprop="name">《每周一记》</span>
                   </a>
                 </span>
 
@@ -362,8 +357,8 @@ APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，�
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/22/Android之APK瘦身浅谈/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/11/22/Android之APK瘦身浅谈/" itemprop="commentCount"></span>
+                <a href="/2016/12/31/WindowSoftInputMode_of_android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/31/WindowSoftInputMode_of_android/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -390,50 +385,64 @@ APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，�
 
       
         <blockquote>
-<p>为之于未有，治之于未乱。</p>
+<p>为之于未有，治之于未乱。  </p>
 </blockquote>
-<h3 id="APK结构"><a href="#APK结构" class="headerlink" title="APK结构"></a>APK结构</h3><p>在知道如何为APK瘦身前，我们需要先了解APK的结构，然后根据其组成部分进行优化处理。在Android Studio工具栏里，打开build–&gt;Analyze APK, 选择要分析的APK。<br><a id="more"></a><br><img src="http://upload-images.jianshu.io/upload_images/2082551-2d20e1eb47d9b277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="APK结构.png"></p>
-<p>从上面图片中可以看出占用空间的主要是lib、res、assets、代码等，那么我们主要方向则应该精简代码、压缩图片、去除无用的库和资源文件。精简代码则要求开发者具有较高的编码素养和良好的编码习惯，同时也可能优化代码之后对APK大小不会有明细的改善，那接下来则介绍几种立竿见影的方法。</p>
-<h3 id="压缩图片"><a href="#压缩图片" class="headerlink" title="压缩图片"></a>压缩图片</h3><p>通常情况下，从UI设计师那里获得的切图都是mipmap-hdpi、mipmap-xhdpi、mipmap-xxhdpi等几套不同分辨率的，通常情况下我们选择使用xhdpi或者xxhdpi一套资源图，即可满足大部分Android分辨率的手机。同时进行图片压缩，可以大大减少图片资源的占用大小。</p>
+<p>在以往的项目开发中，关于软键盘的知识点一直比较模糊，只是知道简单的使用，当遇到问题的时候，也只能靠度娘或者蒙，刚好最近一个同事询问相关问题时，才发现自己知识的薄弱，正好以此来激励自己不断学习。这也正是这边文章的诞生的原因，更是让我决定开始记录《每周一记》。</p>
+<a id="more"></a>
+<p><a href="https://developer.android.com/guide/topics/manifest/activity-element.html#wsoft" target="_blank" rel="external">参考：官方文档</a></p>
+<h4 id="一、WindowSoftInputMode属性"><a href="#一、WindowSoftInputMode属性" class="headerlink" title="一、WindowSoftInputMode属性"></a>一、WindowSoftInputMode属性</h4><p>活动的主窗口如何与包含屏幕上的软键盘窗口交互,这个属性的设置将会影响两件事情:</p>
 <ul>
-<li>推荐使用<a href="https://tinypng.com" target="_blank" rel="external">tinypng</a>、<a href="https://zhitu.isux.us" target="_blank" rel="external">智图</a></li>
+<li>软键盘的状态:当活动(Activity)成为用户关注的焦点时，它是否隐藏或显示。</li>
+<li>对活动主窗口进行的调整：无论是调整大小以便为软键盘腾出空间，还是在软键盘覆盖窗口的一部分，以便当前焦点内容可见。  </li>
 </ul>
-<h3 id="使用Vector-Asset代替图片资源"><a href="#使用Vector-Asset代替图片资源" class="headerlink" title="使用Vector Asset代替图片资源"></a>使用Vector Asset代替图片资源</h3><h4 id="Vector的优势"><a href="#Vector的优势" class="headerlink" title="Vector的优势"></a>Vector的优势</h4><p>Google在发布Android 5.0时，提供了Vector矢量图的支持，VectorDrawable相对于普通的Drawable来说，有以下几个好处：</p>
+<p>How the main window of the activity interacts with the window containing the on-screen soft keyboard. The setting for this attribute affects two things:</p>
 <ul>
-<li>Vector矢量图可以自动进行适配，不需要通过分辨率来设置不同的图片</li>
-<li>Vector矢量图可以大幅减少图像的体积，同样一张图，用Vector来实现，可能只有PNG的几十分之一</li>
-<li>使用简单，很多设计工具，都可以直接导出SVG图像，从而转换成Vector矢量图</li>
-<li>功能强大，少量代码即可实现复杂炫酷的动画</li>
-<li>成熟、稳定，前端已经非常广泛的进行使用了</li>
+<li>The state of the soft keyboard — whether it is hidden or visible — when the activity becomes the focus of user attention.</li>
+<li>The adjustment made to the activity’s main window — whether it is resized smaller to make room for the soft keyboard or whether its contents pan to make the current focus visible when part of the window is covered by the soft keyboard.</li>
 </ul>
-<h4 id="在Android中的使用"><a href="#在Android中的使用" class="headerlink" title="在Android中的使用"></a>在Android中的使用</h4><p>Android Studio提供了两种创建Vector资源的方式:</p>
+<h5 id="1、属性详解"><a href="#1、属性详解" class="headerlink" title="1、属性详解"></a>1、属性详解</h5><p>The setting must be one of the values listed in the following table, or a combination of one “state…” value plus one “adjust…” value. Setting multiple values in either group — multiple “state…” values, for example — has undefined results. Individual values are separated by a vertical bar (|). For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;activity android:windowSoftInputMode=&quot;stateVisible|adjustResize&quot; . . . &gt;</div></pre></td></tr></table></figure>
+<p>此处设置的值（“stateUnspecified”和“adjustUnspecified”除外）将覆盖主题中设置的值。</p>
+<p>Values set here (other than “stateUnspecified” and “adjustUnspecified”) override values set in the theme.</p>
+<p>用来设置窗口软键盘的交互模式，其属性一共有9个取值，分别是：stateUnspecified，stateUnchanged，stateHidden，stateAlwaysHidden，stateVisible，stateAlwaysVisible，adjustUnspecified，adjustResize，adjustPan。</p>
 <ul>
-<li>使用Material Icon</li>
-<li>使用Local file(SVG,PSD)</li>
-</ul>
-<p>在Android Studio工具栏里，File-&gt;New-&gt;Vector Asset<br><img src="http://upload-images.jianshu.io/upload_images/2082551-623e3f84eb7ed21d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Material Icon.png"><br><img src="http://upload-images.jianshu.io/upload_images/2082551-2e46e081b4e5ca27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Local file.png"></p>
-<p>如果需要对5.0之前版本进行兼容的话，还需引用AppCompat 23.2及以上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:appcompat-v7:23.2.0</div></pre></td></tr></table></figure>
-<p>本文主要讲解使用Vector Asset来代替PNG图片，至于其动画等进阶用法，本文不做详细讲解。<br><img src="http://upload-images.jianshu.io/upload_images/2082551-b7d8bafaa0a59b51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Vector Drawable.png"></p>
-<p>这里需要解释下这里的几个标签：</p>
-<ul>
-<li>android:width :定义图片的宽</li>
-<li>android:height:定义图片的高</li>
-<li>android:viewportWidth:定义图像宽被划分的比例大小</li>
-<li>android:viewportHeight :定义图像高被划分的比例大小</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">例如例子中的24，即把24dp大小的图像划分成24份，后面Path标签中的坐标，就全部使用的是这里划分后的坐标系统。这样的好处，就是将图像大小与图像分离，我们可以随意修改图像大小，而不需要修改PathData中的坐标。</div></pre></td></tr></table></figure>
-<ul>
-<li>android:fillColor:图片填充颜色</li>
-<li>android:pathData中的这些属性与Canvas绘图的属性基本类似。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">M = moveto(M X,Y) ：将画笔移动到指定的坐标位置</div><div class="line">L = lineto(L X,Y) ：画直线到指定的坐标位置</div><div class="line">H = horizontal lineto(H X)：画水平线到指定的X坐标位置</div><div class="line">V = vertical lineto(V Y)：画垂直线到指定的Y坐标位置</div><div class="line">C = curveto(C X1,Y1,X2,Y2,ENDX,ENDY)：三次贝赛曲线</div><div class="line">S = smooth curveto(S X2,Y2,ENDX,ENDY)</div><div class="line">Q = quadratic Belzier curve(Q X,Y,ENDX,ENDY)：二次贝赛曲线</div><div class="line">T = smooth quadratic Belzier curveto(T ENDX,ENDY)：映射</div><div class="line">A = elliptical Arc(A RX,RY,XROTATION,FLAG1,FLAG2,X,Y)：弧线</div><div class="line">Z = closepath()：关闭路径</div></pre></td></tr></table></figure>
+<li><p>stateUnspecified<br>默认交互方式，系统会根据界面采取相应的软键盘的显示模式。比如，当界面上只有输入框和按钮的时候，软键盘就不会自动弹出，但是当有获得焦点的输入框的界面有滚动的需求的时候，会自动弹出软键盘，例如外层为ScrollView。阻止键盘弹出的一个解决方案就是，在xml文件中，设置一个非输入框控件获取焦点。<br>The state of the soft keyboard (whether it is hidden or visible) is not specified. The system will choose an appropriate state or rely on the setting in the theme.<br>This is the default setting for the behavior of the soft keyboard.</p>
+</li>
+<li><p>stateUnchanged<br>保持当前软键盘状态不变。举个例子，假如当前界面键盘是隐藏的，那么跳转之后的界面，软键盘也是隐藏的；如果当前界面是显示的，那么跳转之后的界面，软键盘也是显示状态。<br>The soft keyboard is kept in whatever state it was last in, whether visible or hidden, when the activity comes to the fore.</p>
+</li>
+<li><p>stateHidden<br>当用户导航到而不是返回到该activity时，软键盘总是被隐藏。<br>The soft keyboard is hidden when the user chooses the activity — that is, when the user affirmatively navigates forward to the activity, rather than backs into it because of leaving another activity.</p>
+</li>
+<li><p>stateAlwaysHidden<br>当Activity的主窗口拥有输入焦点时，软键盘总是被隐藏。<br>The soft keyboard is always hidden when the activity’s main window has input focus.</p>
+</li>
+<li><p>stateVisible<br>强制打开软键盘。<br>The soft keyboard is visible when that’s normally appropriate (when the user is navigating forward to the activity’s main window).</p>
+</li>
+<li><p>stateAlwaysVisible<br>The soft keyboard is made visible when the user chooses the activity — that is, when the user affirmatively navigates forward to the activity, rather than backs into it because of leaving another activity.</p>
+</li>
+<li><p>adjustUnspecified<br>设置软键盘与软件的显示内容之间的显示关系，默认的设置模式。在这中情况下，系统会根据界面选择不同的模式。如果界面里面有可以滚动的控件，比如ScrowView，系统会减小可以滚动的界面的大小，从而保证即使软键盘显示出来了，也能够看到所有的内容。如果布局里面没有滚动的控件，那么软键盘可能就会盖住一些内容。没有滚动控件，软键盘下面的布局都被遮挡住，若想修改，只能隐藏软键盘，然后选择。而且，重点注意一下上面的布局，当我们选择的输入框偏下的时候，上面的标题栏和布局被软键盘顶上去了。<br>It is unspecified whether the activity’s main window resizes to make room for the soft keyboard, or whether the contents of the window pan to make the current focus visible on-screen. The system will automatically select one of these modes depending on whether the content of the window has any layout views that can scroll their contents. If there is such a view, the window will be resized, on the assumption that scrolling can make all of the window’s contents visible within a smaller area.<br>This is the default setting for the behavior of the main window.</p>
+</li>
+<li><p>adjustResize(压缩模式)<br>这个属性表示Activity的主窗口总是会被调整大小，从而保证软键盘显示空间。<br>The activity’s main window is always resized to make room for the soft keyboard on screen.</p>
+</li>
+<li><p>adjustPan(平移模式)<br>如果设置为这个属性，那么Activity的屏幕大小并不会调整来保证软键盘的空间，而是采取了另外一种策略，系统会通过布局的移动，来保证用户要进行输入的输入框肯定在用户的视野范围内，从而让用户可以看到自己输入的内容。对于没有滚动控件的布局来说，这个其实就是默认的设置，如果我们选择的位置偏下，上面的标题栏和部分控件会被顶上去。<br>The activity’s main window is not resized to make room for the soft keyboard. Rather, the contents of the window are automatically panned so that the current focus is never obscured by the keyboard and users can always see what they are typing. This is generally less desirable than resizing, because the user may need to close the soft keyboard to get at and interact with obscured parts of the window.</p>
 </li>
 </ul>
-<h3 id="去除无用资源"><a href="#去除无用资源" class="headerlink" title="去除无用资源"></a>去除无用资源</h3><p>在gradle使用minifyEnabled进行Proguard混淆，关于如何进行混淆，本文不做讲解。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            minifyEnabled true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在gradle使用shrinkResources去除无用资源。另外我们也可以在AndroidStudio的菜单中选择Analyze-&gt;Inspecting Code进入Lint工具分析，查找未使用的图片资源 ，在结果列表中找到Unused resource这一栏，里面显示的都是未使用的资源列表，可以参照该信息手动删除资源。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123; shrinkResources true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在gradle使用resConfigs设置去除无用的语言资源。例如下面的代码就只保留了中文和英文的语言资源：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    defaultConfig &#123;</div><div class="line">        resConfigs &quot;zh&quot; ,&quot;en&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 备注：如果我们不设置”adjust…”的属性，对于没有滚动控件的布局来说，采用的是adjustPan方式，而对于有滚动控件的布局，则是采用的adjustResize方式。</p>
+<h5 id="2、使用方式"><a href="#2、使用方式" class="headerlink" title="2、使用方式"></a>2、使用方式</h5><ul>
+<li><p>代码实现方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> //在activity中的setContentView之前写上以下代码</div><div class="line">getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);</div></pre></td></tr></table></figure>
+</li>
+<li><p>xml实现方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//在 项目的AndroidManifest.xml文件中界面对应的&lt;activity&gt;里加入</div><div class="line">android:windowSoftInputMode=&quot;adjustPan&quot;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="二、手动打开、关闭软键盘"><a href="#二、手动打开、关闭软键盘" class="headerlink" title="二、手动打开、关闭软键盘"></a>二、手动打开、关闭软键盘</h4><p>在开发过程中，难免会遇到想手动打开或者关闭软键盘的情况，这时使用以下代码不失为一种好办法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 动态显示隐藏软键盘</div><div class="line"> *</div><div class="line"> * @param context context</div><div class="line"> */</div><div class="line">public static void toggleSoftInput(Context context) &#123;</div><div class="line">    InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);</div><div class="line">    imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="三、软键盘的Enter键"><a href="#三、软键盘的Enter键" class="headerlink" title="三、软键盘的Enter键"></a>三、软键盘的Enter键</h4><h5 id="1、使用方式"><a href="#1、使用方式" class="headerlink" title="1、使用方式"></a>1、使用方式</h5><ul>
+<li><p>当layout中有多个EditText，把每个控件的android:singleLine的属性都被设置成true的情况下，软键盘的Enter键上 的文字会变成“Next”，按下后下个EditText会自动获得焦点（实现了“Next”的功能）；当最后一个控件获得焦点的时候，Enter键上的文 字会变成“Done”，按下后软键盘会自动隐藏起来。</p>
+</li>
+<li><p>把EditText的ImeOptions属性设置成不同的值，Enter键上可以显示不同的文字或图案<br>actionNone : 回车键，按下后光标到下一行<br>actionGo ： Go，<br>actionSearch ： 一个放大镜<br>actionSend ： Send<br>actionNext ： Next<br>actionDone ： Done，隐藏软键盘，即使不是最后一个文本输入框</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">inputView.setImeOptions(EditorInfo.IME_ACTION_SEARCH);</div><div class="line">editText.setOnEditorActionListener(new TextView.OnEditorActionListener() &#123;</div><div class="line">            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) &#123;</div><div class="line">                if (actionId == EditorInfo.IME_ACTION_SEARCH || (event != null &amp;&amp; event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) &#123;</div><div class="line">                     //do something;              </div><div class="line">                    return true;</div><div class="line">                &#125;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -457,9 +466,9 @@ APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，�
       
         <div class="post-tags">
           
-            <a href="/tags/APK/" rel="tag"># APK</a>
-          
             <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/软键盘/" rel="tag"># 软键盘</a>
           
         </div>
       
@@ -468,8 +477,8 @@ APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/15/即时通讯技术资料分类/" rel="next" title="即时通讯技术资料分类">
-                <i class="fa fa-chevron-left"></i> 即时通讯技术资料分类
+              <a href="/2016/12/31/update_apk_by_downloadmanager/" rel="next" title="Android之DownloadManager实现软件更新并自动安装">
+                <i class="fa fa-chevron-left"></i> Android之DownloadManager实现软件更新并自动安装
               </a>
             
           </div>
@@ -477,6 +486,10 @@ APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/01/use_HEXO_to_build_a_technical_blog_on_Github/" rel="prev" title="使用Hexo在Github上搭建专属博客之技术总结">
+                使用Hexo在Github上搭建专属博客之技术总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -502,8 +515,8 @@ APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，�
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/11/22/Android之APK瘦身浅谈/"
-           data-title="Android之APK瘦身浅谈" data-url="http://yoursite.com/2017/11/22/Android之APK瘦身浅谈/">
+      <div class="ds-thread" data-thread-key="2016/12/31/WindowSoftInputMode_of_android/"
+           data-title="《每周一记》之Android软键盘" data-url="http://yoursite.com/2016/12/31/WindowSoftInputMode_of_android/">
       </div>
     
   </div>
@@ -603,7 +616,7 @@ APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#APK结构"><span class="nav-number">1.</span> <span class="nav-text">APK结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩图片"><span class="nav-number">2.</span> <span class="nav-text">压缩图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Vector-Asset代替图片资源"><span class="nav-number">3.</span> <span class="nav-text">使用Vector Asset代替图片资源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector的优势"><span class="nav-number">3.1.</span> <span class="nav-text">Vector的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在Android中的使用"><span class="nav-number">3.2.</span> <span class="nav-text">在Android中的使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#去除无用资源"><span class="nav-number">4.</span> <span class="nav-text">去除无用资源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、WindowSoftInputMode属性"><span class="nav-number">1.</span> <span class="nav-text">一、WindowSoftInputMode属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、属性详解"><span class="nav-number">1.1.</span> <span class="nav-text">1、属性详解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、使用方式"><span class="nav-number">1.2.</span> <span class="nav-text">2、使用方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、手动打开、关闭软键盘"><span class="nav-number">2.</span> <span class="nav-text">二、手动打开、关闭软键盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、软键盘的Enter键"><span class="nav-number">3.</span> <span class="nav-text">三、软键盘的Enter键</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、使用方式"><span class="nav-number">3.1.</span> <span class="nav-text">1、使用方式</span></a></li></ol></li></ol></div>
             
 
           </div>
