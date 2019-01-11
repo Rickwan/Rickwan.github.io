@@ -84,17 +84,23 @@
 
 
 
-<meta name="description" content="为之于未有，治之于未乱。">
+<meta name="description" content="为之于未有，治之于未乱。  
+
+Activity作为Android四大组件之首，它的生命周期和启动模式在平时的开发中，重要而又常见，熟练的掌握相关知识，对于Activity的灵活运用会有很大的帮助，下面将对相关重要知识点做简单梳理。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android知识体系（一）--四大组件之Activity">
 <meta property="og:url" content="http://yoursite.com/2019/01/11/Android知识体系（一）--四大组件之Activity/index.html">
 <meta property="og:site_name" content="Rickwan's Blog">
-<meta property="og:description" content="为之于未有，治之于未乱。">
+<meta property="og:description" content="为之于未有，治之于未乱。  
+
+Activity作为Android四大组件之首，它的生命周期和启动模式在平时的开发中，重要而又常见，熟练的掌握相关知识，对于Activity的灵活运用会有很大的帮助，下面将对相关重要知识点做简单梳理。">
 <meta property="og:image" content="http://yoursite.com/images/Android知识体系.png">
-<meta property="og:updated_time" content="2019-01-11T06:33:25.253Z">
+<meta property="og:updated_time" content="2019-01-11T08:28:32.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android知识体系（一）--四大组件之Activity">
-<meta name="twitter:description" content="为之于未有，治之于未乱。">
+<meta name="twitter:description" content="为之于未有，治之于未乱。  
+
+Activity作为Android四大组件之首，它的生命周期和启动模式在平时的开发中，重要而又常见，熟练的掌握相关知识，对于Activity的灵活运用会有很大的帮助，下面将对相关重要知识点做简单梳理。">
 <meta name="twitter:image" content="http://yoursite.com/images/Android知识体系.png">
 
 
@@ -383,8 +389,44 @@
         <blockquote>
 <p>为之于未有，治之于未乱。  </p>
 </blockquote>
+<p>Activity作为Android四大组件之首，它的生命周期和启动模式在平时的开发中，重要而又常见，熟练的掌握相关知识，对于Activity的灵活运用会有很大的帮助，下面将对相关重要知识点做简单梳理。</p>
 <a id="more"></a>
 <p><img src="/images/Android知识体系.png" alt=""></p>
+<h3 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h3><h3 id="Activity的启动模式"><a href="#Activity的启动模式" class="headerlink" title="Activity的启动模式"></a>Activity的启动模式</h3><h4 id="Activity的LaunchMode"><a href="#Activity的LaunchMode" class="headerlink" title="Activity的LaunchMode"></a>Activity的LaunchMode</h4><p>有时候为了满足项目特殊需求，我们就必须使用Activity的启动模式，下面将简单的介绍一下四种启动模式:standard、singleTop、singleTask、singleInstance。</p>
+<p>这些模式分为两大类，“standard”和“singleTop”Activity 为一类，“singleTask”和“singleInstance”为另一类。前两者启动模式的Activity可以被实例化多次。</p>
+<ul>
+<li>standard：标准模式<br>每次启动一个Activity都会创建一个新的实例</li>
+<li>singleTop：栈顶复用模式<br>如果目标任务的顶部已存在一个Activity实例则系统会通过调用该实例的onNewIntent()方法向其传送Intent，而不是创建新的Activity实例。</li>
+<li><p>singleTask：栈内复用模式<br>如果任务栈中已存在该Activity的实例，则系统会通过调用该实例的onNewIntent()方法向其传送Intent，而不是创建新的Activity实例，同时会将位于该实例顶部的其他实例全部移除出栈。<br>此处将受TaskAffinity属性影响(用于指定Activity所关联的Task)，系统将查询是否有该Activity需要的任务栈，如果不存在，就会重新创建一个任务栈，然后创建Activity的实例；如果该任务栈已存在，则继续查询是否已存在该Activity的实例，如果不存在，则创建实例并放入栈中，如果存在，则将该实例顶部的其他实例全部推出栈。</p>
+</li>
+<li><p>singleInstance：单例模式<br>此模式具备singleTask模式的所有特性，此外具有此种模式的Activity只能单独地位于一个任务栈中。</p>
+</li>
+</ul>
+<p>taskAffinity:标识一个Activity所需要的任务栈的名称，默认情况下，所有Activity所需的任务栈的名称为应用的包名；通常和allowTaskReparenting属性结合使用。<br>allowTaskReparenting:允许其转移任务栈，值为字符串，中间必须含有包名分隔符“.”。<br>当一个应用A启动了应用B的某个Activity后，点击home键回到桌面，再点击B应用桌面图标，如果该Activity的allowTaskReparenting属性为true时，该Activity会直接从应用A的任务栈转移到B的任务栈中，同时B应用将直接进入该Activity，而不是B应用的主Activity。</p>
+<h4 id="Activity的Flags"><a href="#Activity的Flags" class="headerlink" title="Activity的Flags"></a>Activity的Flags</h4><p>Activity的Flags有很多，详情请查看官方文档，这里介绍几种比较常用的标记位。标记位的作用有很多，有的可以设定Activity的启动模式。</p>
+<ul>
+<li>FLAG_ACTIVITY_NEW_TASK:<br>为Activity指定“singleTask”启动模式</li>
+<li>FLAG_ACTIVITY_SINGLE_TOP:<br>相当于LauchMode中的singleTop。</li>
+<li>FLAG_ACTIVITY_CLEAR_TOP:<br>在同一个任务栈中所有位于它上面的Activity都要出栈。这个标记位一般会和singleTask启动模式一起出现，在这种情况下，被启动的Activity的实例如果已经存在，系统就会调用它的onNewIntent。如果被启动的Activity采用standard启动模式，那么它连同它之上的Activity都要出栈，系统会创建新的实例并放入栈顶。</li>
+<li>FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS:<br>具有这个标记位的Activity不会出现在历史Activity的列表中，如果调出的Activtivity只是一个功能片段，并没有实际的意义，此时长按Home键调出最近使用过的程序类表中，将不会出现此Activity。</li>
+<li>FLAG_ACTIVITY_NO_HISTORY:<br>使用这个FLAG启动的Activity，一旦退出，它不会存在于栈中，比如说，原来是A,B,C这个时候在C中以这个FLAG启动D的，D再启动E，这个时候栈中情况为A,B,C,E。</li>
+</ul>
+<h5 id="LaunchMode和Flags的运用"><a href="#LaunchMode和Flags的运用" class="headerlink" title="LaunchMode和Flags的运用"></a>LaunchMode和Flags的运用</h5><p>设置Activity启动模式的两种方法：</p>
+<ul>
+<li><p>通过在AndroidMenifest.xml中设置：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;activity</div><div class="line">    android:name=&quot;.ui.activity.MainActivity&quot;</div><div class="line">    android:screenOrientation=&quot;portrait&quot;</div><div class="line">    android:launchMode=&quot;singleTask&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过Intent设置标志位  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent(this,MainActivity.class);</div><div class="line">intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以上两种方式都可以为Activity设置启动模式，当两者同时存在时，将以第二种为准，第一种方式无法直接为Activity设定FLAG_ACTIVITY_CLEAR_TOP标识，而第二种则无法为Activity指定singleInstance模式。</p>
+<h3 id="IntentFilter的匹配规则"><a href="#IntentFilter的匹配规则" class="headerlink" title="IntentFilter的匹配规则"></a>IntentFilter的匹配规则</h3><p>启动Activity分为显示调用和隐式调用，显示调用需要明确地指定被启动对象的组件信息，包括包名和类名，而隐式调用不需要明确指定组件信息，但需要Intent能够匹配目标组件的IntentFilter中所设置的过滤信息。只有同时匹配过滤列表中的action、category、data信息，才能完成匹配并成功启动目标Activity，一个Activity中可以拥有多个IntentFilter，一个Intent只要能匹配任何一组IntentFilter即可成功启动对应的Activity。</p>
+<h4 id="action的匹配规则"><a href="#action的匹配规则" class="headerlink" title="action的匹配规则"></a>action的匹配规则</h4><p>action是一个字符串，系统预定义了一些action，同时我们也可以自定义，每个过滤规则中可以有多个action。只要Intent中的action与过滤规则中的任何一个action字符串值完全一样（区分大小写），即可匹配成功，即action的匹配要求Intent中的action存在且必须和过滤规则中的其中一个action相同。</p>
+<h4 id="category的匹配规则"><a href="#category的匹配规则" class="headerlink" title="category的匹配规则"></a>category的匹配规则</h4><p>category是一个字符串，系统预定义了一些category，同时我们也可以自定义，每个过滤规则中可以有多个category。Intent中所有的category必须和过滤规则其中一个category相同（字符串值完全一样，区分大小写）。系统在调用startActivity或者startActivityForResult时会默认为Intent加上“android.intent.category.DEFAULT”这个category，所以为了我们的activity能够接收隐式调用，就必须在intent-fileter中指定“android.intent.category.DEFAULT”。</p>
+<h4 id="data的匹配规则"><a href="#data的匹配规则" class="headerlink" title="data的匹配规则"></a>data的匹配规则</h4><p>data的匹配规则和action类似，如果过滤规则中定义了data，那么Itent中必须也要有定义可匹配的data。data由mimeType和URI组成，mimeType指媒体类型，比如image/jpeg、audio/mpeg4-generic和video/* 等，可以表示图片、文本、视频等不同的媒体格式；而URI中包含数据比较多一些，结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;scheme&gt;://&lt;host&gt;:&lt;post&gt;/[path]/[pathPrefix]/[pathPattern]</div><div class="line"></div><div class="line">content://com.example.projce:200/folder/subfolder/etc</div></pre></td></tr></table></figure>
+<p>Scheme：URI的模式，比如http、file、content等，URI中必须指定Scheme；<br>Host：URI的主机名，比如www.baidu.com，URI中必须指定Host；<br>Port：URI中的端口号，如果80，<br>Path、PathPrefix、PathPattern：表述路径信息，其中path表述完整的路径信息，PathPattern也表示完整的路径信息，但是它里面可以包含通配符“<em> ”，“</em>”表示0个或多个任意字符，需要注意的是，由于正则表达式的规范，如果想要表示真实的字符串，那么“<em>”要写成“\</em>”，”\”要写成“\\”；pathPrefix表示路径的前缀信息。</p>
 
       
     </div>
@@ -480,8 +522,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -537,6 +588,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity的生命周期"><span class="nav-number">1.</span> <span class="nav-text">Activity的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity的启动模式"><span class="nav-number">2.</span> <span class="nav-text">Activity的启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity的LaunchMode"><span class="nav-number">2.1.</span> <span class="nav-text">Activity的LaunchMode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity的Flags"><span class="nav-number">2.2.</span> <span class="nav-text">Activity的Flags</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#LaunchMode和Flags的运用"><span class="nav-number">2.2.1.</span> <span class="nav-text">LaunchMode和Flags的运用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IntentFilter的匹配规则"><span class="nav-number">3.</span> <span class="nav-text">IntentFilter的匹配规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#action的匹配规则"><span class="nav-number">3.1.</span> <span class="nav-text">action的匹配规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#category的匹配规则"><span class="nav-number">3.2.</span> <span class="nav-text">category的匹配规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data的匹配规则"><span class="nav-number">3.3.</span> <span class="nav-text">data的匹配规则</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
