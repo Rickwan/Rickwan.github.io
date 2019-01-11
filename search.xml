@@ -33,7 +33,7 @@
     <entry>
       <title><![CDATA[Android知识体系]]></title>
       <url>%2F2019%2F01%2F11%2FProject_Component%2F</url>
-      <content type="text"><![CDATA[为之于未有，治之于未乱。 Activity作为Android四大组件之首，它的生命周期和启动模式在平时的开发中，重要而又常见，熟练的掌握相关知识，对于Activity的灵活运用会有很大的帮助，下面将对相关重要知识点做简单梳理。 四大组件ActivityServiceBroadcastReceiverContentProvider]]></content>
+      <content type="text"><![CDATA[为之于未有，治之于未乱。 Activity作为Android四大组件之首，它的生命周期和启动模式在平时的开发中，重要而又常见，熟练的掌握相关知识，对于Activity的灵活运用会有很大的帮助，下面将对相关重要知识点做简单梳理。 四大组件ActivityServiceBroadcastReceiverContentProviderUIView基础View工作流程View滑动View事件分化View滑动冲突自定义ViewDrawableRemoteViews动画View动画帧动画属性动画过渡动画线程线程和线程池消息机制AsyncTaskIntentService数据存储SharePrefrencesContentProviderSQLite数据库网络存储文件存储Bitmap的加载和缓存Bitmap的高效加载Bitmap的缓存策略LruCacheDiskLruCacheImageLoader的实现ImageLoader的使用IPC机制Android IPC基础Android中的多进程模式Android中的IPC方式Binder连接池]]></content>
     </entry>
 
     
