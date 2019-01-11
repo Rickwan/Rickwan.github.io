@@ -3,6 +3,34 @@
   
     
     <entry>
+      <title><![CDATA[Android知识体系（三）--四大组件之ContentProvider]]></title>
+      <url>%2F2019%2F01%2F11%2FAndroid%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%EF%BC%88%E5%9B%9B%EF%BC%89--%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6%E4%B9%8BContentProvider%2F</url>
+      <content type="text"><![CDATA[为之于未有，治之于未乱。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Android知识体系（三）--四大组件之BroadcastReceiver]]></title>
+      <url>%2F2019%2F01%2F11%2FAndroid%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%EF%BC%88%E4%B8%89%EF%BC%89--%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6%E4%B9%8BBroadcastReceiver%2F</url>
+      <content type="text"><![CDATA[为之于未有，治之于未乱。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Android知识体系（二）--四大组件之Service]]></title>
+      <url>%2F2019%2F01%2F11%2FAndroid%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%EF%BC%88%E4%BA%8C%EF%BC%89--%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6%E4%B9%8BService%2F</url>
+      <content type="text"><![CDATA[为之于未有，治之于未乱。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Android知识体系（一）--四大组件之Activity]]></title>
+      <url>%2F2019%2F01%2F11%2FAndroid%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%EF%BC%88%E4%B8%80%EF%BC%89--%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6%E4%B9%8BActivity%2F</url>
+      <content type="text"><![CDATA[为之于未有，治之于未乱。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Android之APK瘦身浅谈]]></title>
       <url>%2F2017%2F11%2F22%2Freduce_apk%2F</url>
       <content type="text"><![CDATA[为之于未有，治之于未乱。 APK结构在知道如何为APK瘦身前，我们需要先了解APK的结构，然后根据其组成部分进行优化处理。在Android Studio工具栏里，打开build–&gt;Analyze APK, 选择要分析的APK。 从上面图片中可以看出占用空间的主要是lib、res、assets、代码等，那么我们主要方向则应该精简代码、压缩图片、去除无用的库和资源文件。精简代码则要求开发者具有较高的编码素养和良好的编码习惯，同时也可能优化代码之后对APK大小不会有明细的改善，那接下来则介绍几种立竿见影的方法。 压缩图片通常情况下，从UI设计师那里获得的切图都是mipmap-hdpi、mipmap-xhdpi、mipmap-xxhdpi等几套不同分辨率的，通常情况下我们选择使用xhdpi或者xxhdpi一套资源图，即可满足大部分Android分辨率的手机。同时进行图片压缩，可以大大减少图片资源的占用大小。 推荐使用tinypng、智图 使用Vector Asset代替图片资源Vector的优势Google在发布Android 5.0时，提供了Vector矢量图的支持，VectorDrawable相对于普通的Drawable来说，有以下几个好处： Vector矢量图可以自动进行适配，不需要通过分辨率来设置不同的图片 Vector矢量图可以大幅减少图像的体积，同样一张图，用Vector来实现，可能只有PNG的几十分之一 使用简单，很多设计工具，都可以直接导出SVG图像，从而转换成Vector矢量图 功能强大，少量代码即可实现复杂炫酷的动画 成熟、稳定，前端已经非常广泛的进行使用了 在Android中的使用Android Studio提供了两种创建Vector资源的方式: 使用Material Icon 使用Local file(SVG,PSD) 在Android Studio工具栏里，File-&gt;New-&gt;Vector Asset 如果需要对5.0之前版本进行兼容的话，还需引用AppCompat 23.2及以上 1com.android.support:appcompat-v7:23.2.0 本文主要讲解使用Vector Asset来代替PNG图片，至于其动画等进阶用法，本文不做详细讲解。 这里需要解释下这里的几个标签： android:width :定义图片的宽 android:height:定义图片的高 android:viewportWidth:定义图像宽被划分的比例大小 android:viewportHeight :定义图像高被划分的比例大小 1例如例子中的24，即把24dp大小的图像划分成24份，后面Path标签中的坐标，就全部使用的是这里划分后的坐标系统。这样的好处，就是将图像大小与图像分离，我们可以随意修改图像大小，而不需要修改PathData中的坐标。 android:fillColor:图片填充颜色 android:pathData中的这些属性与Canvas绘图的属性基本类似。12345678910M = moveto(M X,Y) ：将画笔移动到指定的坐标位置L = lineto(L X,Y) ：画直线到指定的坐标位置H = horizontal lineto(H X)：画水平线到指定的X坐标位置V = vertical lineto(V Y)：画垂直线到指定的Y坐标位置C = curveto(C X1,Y1,X2,Y2,ENDX,ENDY)：三次贝赛曲线S = smooth curveto(S X2,Y2,ENDX,ENDY)Q = quadratic Belzier curve(Q X,Y,ENDX,ENDY)：二次贝赛曲线T = smooth quadratic Belzier curveto(T ENDX,ENDY)：映射A = elliptical Arc(A RX,RY,XROTATION,FLAG1,FLAG2,X,Y)：弧线Z = closepath()：关闭路径 去除无用资源在gradle使用minifyEnabled进行Proguard混淆，关于如何进行混淆，本文不做讲解。 1234567android &#123; buildTypes &#123; release &#123; minifyEnabled true &#125; &#125;&#125; 在gradle使用shrinkResources去除无用资源。另外我们也可以在AndroidStudio的菜单中选择Analyze-&gt;Inspecting Code进入Lint工具分析，查找未使用的图片资源 ，在结果列表中找到Unused resource这一栏，里面显示的都是未使用的资源列表，可以参照该信息手动删除资源。 123456android &#123; buildTypes &#123; release &#123; shrinkResources true &#125; &#125;&#125; 在gradle使用resConfigs设置去除无用的语言资源。例如下面的代码就只保留了中文和英文的语言资源： 12345android &#123; defaultConfig &#123; resConfigs &quot;zh&quot; ,&quot;en&quot; &#125;&#125;]]></content>
